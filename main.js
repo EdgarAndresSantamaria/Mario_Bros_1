@@ -1,31 +1,51 @@
+//importar método de carga de nivel de la clase loaders.s
 import {loadLevel} from './loaders.js';
 
-
-const canvas = document.getElementById("screen");
+// declaración lienzo de pintura junro contexto de dibujado '2d'
+// sobre ellos se dibujará el juego con resolución (300*300 px)  
+// a 60 FPS 'frames per second' constantes.
+const canvas = document.getElementById("Screen");
 const context = canvas.getContext("2d");
-
+context.scale(2,2)
+console.log(canvas.width)
+console.log(canvas.length)
+//iniciar offset 
 let offset = 0;
-loadLevel().
-    then( level => {
-            level.draw(context, 0);
-            level.tiles.forEach(console.log);
-            // código del ejercicio 6 
+//cargar nivel mediante la clase 'loaders' la cual devolvera el 'level' de juego cargado   
+loadLevel().then( level => {
+        var offset=0;
+        // llamar periodicamente a 'level' draw' para mostrar el nivel a 60 fps
+        var reloj = setInterval(function(){level.draw(context, offset)},1000/60);
         
-            var fps=60;
-            //lamar periodicamente a draw
-            var reloj = setInterval(level.draw,1000/fps);
-        
-        // código del ejercicio 11
-        // Añadir el código necesario para desplazar (scroll) el background del nivel 
-        // hacia la izquierda. Se puede hacer en una sóla línea
-        // Piensa cómo llamar periódicamente al método level.draw y con qué parámetros...
-        //
-        //
-        //
-        // código del ejercicio 12
-        // COMENTA el código del ejercicio 11. A continuación indica aquí
-        // el código que permite desplazar el background hacia la izquierda o hacia 
-        // la derecha pulsando las teclas flecha izquierda y flecha derecha.
-       });
+        // código para:
+        // desplazar mapa a la derecha
+        // offset += 10  
+        // desplazar mapa a la izquierda
+        // offset -= 10  
+       
+        //gestor de input teclado, detecta cuando se presionan teclas y se gestionan sus funciones
+        window.onkeyup = function(e) {
+                var key = e.keyCode ? e.keyCode : e.which;
+                /** (ke 'IDs')
+                   Left: 37
+                   Up: 38
+                   Right: 39
+                   Down: 40
+                */
+                if (key == 39) {
+                        //mover mapa 'offset' derecha 'right' 'arrow'
+                        offset += 10;
+                }else if (key == 37) {
+                        //mover mapa 'offset' izquierda 'left' 'arrow'
+                        offset -= 10;
+                }else if (key == 38) {
+                        //saltar
+                }else if (key == 37) {
+                        //parar
+                }
+        }
+});
+
+
 
 
