@@ -11,7 +11,9 @@ loadLevel().
             level.tiles.forEach(console.log);
             // código del ejercicio 6 
         
-        
+            var fps=60;
+            //lamar periodicamente a draw
+            var reloj = setInterval(level.draw,1000/fps);
         
         // código del ejercicio 11
         // Añadir el código necesario para desplazar (scroll) el background del nivel 

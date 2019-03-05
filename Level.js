@@ -11,6 +11,7 @@ export default class Level {
         // dibujar en el contexto la imagen de background con el
         // desplazamiento indicado en el parámetro offset
         // (recuerda que el contexto tiene unas dimensiones de 300x300)
+        context.drawImage(this.background,0+offset,0+offset)
     }
 }
 

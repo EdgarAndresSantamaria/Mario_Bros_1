@@ -9,11 +9,13 @@ export default class SpriteSheet {
     }
 
     define(name, x, y, width, height){
-       const buffer = document.createElement('canvas');
+        const buffer = document.createElement('canvas');
+        var ctx = buffer.getContext("2d");
         buffer.width = width;
         buffer.height = height;
         // Ejercicio 8 (Tema: Canvas)
         // pintar en el buffer el tile situado en x,y dentro de la hoja de sprites this.image
+        ctx.drawImage(this.image,x,y, this.width, this.width,0,0, this.width, this.width)
         this.tiles.set(name, buffer);
     }
 
