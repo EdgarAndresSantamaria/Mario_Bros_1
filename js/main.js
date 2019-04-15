@@ -1,7 +1,7 @@
 //importar método de carga de nivel de la clase loaders.s
 import {loadLevel} from './loaders.js';
 import Timer from './Timer.js';
-import {createMario} from './entities.js';
+import {createMario,createLuigi} from './entities.js';
 import {setupKeyboard} from './input.js';
 import Camera from './Camera.js';
 import {setupMouseControl} from './debug.js';
@@ -15,8 +15,9 @@ const context = canvas.getContext("2d");
 context.scale(2,2)
 
 //cargar nivel mediante la clase 'loaders' la cual devolvera el 'level' de juego cargado   
-Promise.all([loadLevel('1-1'),createMario()]).then( ([level,mario]) => {
+Promise.all([loadLevel('1-1'),createMario(),createLuigi()]).then( ([level,mario,luigi]) => {
 
+        luigi.pos.set(84, 64);
         mario.pos.set(64, 64);
         const camera = new Camera();
         window.camera = camera;
@@ -25,9 +26,13 @@ Promise.all([loadLevel('1-1'),createMario()]).then( ([level,mario]) => {
         const input = setupKeyboard(mario);
         input.listenTo(window);
 
+        level.entities.add(luigi);
+        const input2 = setupKeyboard(luigi);
+        input2.listenTo(window);
+
         const input1 = setupMouseControl(canvas, mario, camera);
         input1.listenTo(window);
-        
+
         level.comp.layers.push(createCameraLayer(camera));
 
         const timer = new Timer(1/60);

@@ -101,6 +101,20 @@ export function loadMario(){
   });
 }
 
+export function loadLuigi(){
+    // cargar el mpaeado de Sprites 'sprites.json' y la imagen con los sprites 'tiles.png'
+     return  Promise.all([loadImage('../img/characters.gif')])
+     // cuando este lista 
+     .then(([image]) => {
+       // generar nueva paleta de texturas con imagen 'tiles.png' y resolución (16*16 px)
+       const sprites = new SpriteSheet(image,16,16);
+       // por cada textura definida en la especificacion, definirla en la paleta
+       sprites.define('idle',276,106,16,16)
+       // devolver paleta de texturas
+       return sprites;
+    });
+  }
+
 /**
  * Método para cargar el nivel, internamente gestionara la carga de los distintos módulos de manera asíncrona 'promise'
  * se cargará el mapa 'level.json' , y los elementos necesarios para pintar sus texturas 'loadSpriteSheet'
