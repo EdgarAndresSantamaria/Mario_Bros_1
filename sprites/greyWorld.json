@@ -1,0 +1,28 @@
+{
+    "imageURL": "/img/tiles.png",
+    "tileW": 16,
+    "tileH": 16,
+
+    "tiles": [
+        {
+            "name": "ground",
+            "index": [0, 4]
+        },
+        {
+            "name": "sky",
+            "index": [13, 5]
+        },
+        {
+            "name": "chocolate",
+            "index": [0, 5]
+        },
+        {
+            "name": "bricks",
+            "index": [1, 4]
+        },
+        {
+            "name": "chance",
+            "index": [24, 4]
+        }
+    ]
+}

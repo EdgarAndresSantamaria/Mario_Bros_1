@@ -15,7 +15,7 @@ export class Matrix {
      */
     forEach(callback){
         //Por cada fila 'row' x' recorre todas sus posiciones 'value' 'y', envia cada valor y sus corrdenadas a la funcion 'callback'
-        this.grid.forEach((row, x) => row.forEach((value, y) => callback(value, x, y) ))
+        this.grid.forEach((row, x) => row.forEach((value, y) => callback(value, x, y)))
     }
 
     /**
@@ -49,4 +49,15 @@ export class Matrix {
         this.grid[x][y] = value;
     }
 
+}
+
+export class Vec2 {
+    constructor(x, y) {
+        this.set(x, y);
+    }
+
+    set(x, y) {
+        this.x = x;
+        this.y = y;
+    }
 }
