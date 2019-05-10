@@ -1,6 +1,7 @@
 export default class Compositor {
     constructor() {
         this.layers = [];
+        this.resolvers = [];
     }
 
     draw(context, camera) {

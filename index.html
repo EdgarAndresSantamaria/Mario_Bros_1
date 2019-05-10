@@ -1,28 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-	<meta charset="UTF-8">
-	<title></title>
-	<script type="module" src="/js/main.js"></script>
-	<script language="JavaScript">
-		/**
-		 * <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">
-		 * método para size dinamico de la pantalla
-		function obtenerAncho( ancho ) {$( "#Screen" ).width(ancho)}
+    <title>Super Mario</title>
+    <style>
+        body {
+            background: #000;
+            margin: 0;
+        }
 
-		function obtenerAlto( alto ) {$( "#Screen" ).height(alto)}
-
-		function cargarResolucion(){
-			obtenerAlto($( window ).height());
-			obtenerAncho($( window ).width());
-		}
-
-		$(window).load(cargarResolucion());
-		$(window).resize(cargarResolucion());
-		**/
-	</script> 
+        #screen {
+            display: block;
+            image-rendering: pixelated;
+            height: 100vh;
+            margin: auto;
+        }
+    </style>
+    <script type="module" src="/js/main.js"></script>
 </head>
 <body>
-	<canvas id="Screen" width="640" height="640"></canvas>	
+    <canvas id="screen" width="256" height="240"></canvas>
 </body>
 </html>

@@ -54,5 +54,21 @@ export default class TileResolver {
         });
         return matches;
     }
+
+    addCoin(x1,y1){
+        x1 = x1 / this.tileSize;
+        y1 = y1 / this.tileSize;
+        this.matrix.grid[x1][y1] = {name: 'chance-3', type : 'ground'};
+        this.matrix.grid[x1][y1-1] = {name: 'coin', type : 'prize'};
+    }
+
+    delete(x1, y1){
+        x1 = x1 / this.tileSize;
+        y1 = y1 / this.tileSize;
+        delete this.matrix.grid[x1][y1];
+    }
+
+    getMatrix(){
+        return this.matrix;
+    }
 }
-window.TileResolver=TileResolver

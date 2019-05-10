@@ -5,17 +5,18 @@ export default class KeyboardState {
     constructor() {
         // Holds the current state of a given key
         this.keyStates = new Map();
+
         // Holds the callback functions for a key code
         this.keyMap = new Map();
     }
 
-    addMapping(keyCode, callback) {
-        this.keyMap.set(keyCode, callback);
+    addMapping(code, callback) {
+        this.keyMap.set(code, callback);
     }
 
     handleEvent(event) {
         const {code} = event;
-       
+      
         if (!this.keyMap.has(code)) {
             // Did not have key mapped.
             return;
