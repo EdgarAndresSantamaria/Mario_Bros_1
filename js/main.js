@@ -84,6 +84,9 @@ async function main(canvas) {
     timer.update = function update(deltaTime) {  
         level.comp.paused = pauseFlag; 
         console.log("en ciclo");
+        if(mario.pos.y>200){
+            mario.killable.kill();
+        }
         if(pauseFlag){
             font.print('PAUSED', context, 96, font.size * 10);
         }else if(playerEnv.playerController.lives == 0 || playerEnv.playerController.time == 0 ){
